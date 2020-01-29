@@ -1,0 +1,88 @@
+<div id="mission" class="poleTitle">
+    <p>Nos bonnes pratiques</p>
+</div>
+<p class="container" style="padding-bottom: 50px;text-align: center;">Chez OpenCyLife, on ne vous parle que de sujets que nous avons essayé avant.</p>
+<!-- cartes de bonne pratiques -->
+<div class="container row ngFor">
+    <div *ngFor="let Pratique of bonnesPratiques; let i = index">
+        <div class="content">
+            <label for="modal' + {{i}} + '">
+            <div class="card text-white bg-info shadow" style="width: 15rem;">
+                <div class="imagesInCard">
+                    <img class="card-img" src="{{Pratique.url}}" alt="{{Pratique.titre}}">
+                </div>
+                <div>
+                    <h4 class="card-title">{{Pratique.titre}}</h4>
+                    <p class="card-p">{{Pratique.description}}</p>
+                </div>
+            </div>
+        </label>
+        </div>
+
+        <input class="modal-state" id="modal' + {{i}} + '" type="checkbox" />
+        <div class="modal">
+            <label class="modal__bg" for="modal' + {{i}} + '"></label>
+            <div class="modal__inner shadow">
+                <div class="row">
+                    <img src="{{Pratique.url}}" alt="' + {{Pratique.titre}} + '" />
+                    <h2>{{Pratique.titre}}</h2>
+                </div>
+                <p>{{Pratique.modalText}}</p>
+                <br>
+                <p><a href="{{Pratique.link}}" target="blank">{{Pratique.linkText}}</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- exeptions !!!! -->
+
+
+
+
+<div class="container row" style="margin-top : 1.5em; flex-wrap: wrap;justify-content: space-around;">
+    <!--objet12 -->
+    <div class="content">
+        <label for="modal1001">
+            <div class="card text-white bg-info shadow" style="width: 15rem;">
+                <div class="imagesInCard">
+                    <img class="card-img" src="../../../assets/articles/picture.svg" alt="Revoir son image">
+                </div>
+                <div>
+                    <h4 class="card-title">Revoir son image</h4>
+                    <p class="card-p">Une photo non compressée peut peser comme une petite vidéo</p>
+                </div>
+            </div>
+        </label>
+    </div>
+
+    <input class="modal-state" id="modal1001" type="checkbox" />
+    <div class="modal">
+        <label class="modal__bg" for="modal1001"></label>
+        <div class="modal__inner shadow">
+            <div class="row">
+                <img src="../../../assets/articles/picture.svg" alt="Revoir son image" />
+                <h2>Revoir son image</h2>
+            </div>
+            <p>Une image peut faire toute la différence sur un site internet. Voyez déjà si vous en avez besoin avant de la poster. Sinon voyez les exemples suivant :
+                <br>pour un appareil 20 mégapixels</p>
+            <ul>
+                <li>un fichier brut de capteur type RAW : eviron 35Mo</li>
+                <li>le Jpeg qui en découle Jpeg : environ 8Mo</li>
+                <li>Un Jpeg compressé à la taille de votre écran : environ 1Mo</li>
+                <li>La même photo compressée en WebP : environ 200Ko soit 175 fois plus petite</li>
+            </ul>
+            <p>On peut aller encore plus loin mais déjà, en vrai, ça donne quoi ?</p>
+            <div class="row">
+                <img src="../../../assets/articles/grande main.jpg" title="Jpeg de 113ko" alt="Jpg">
+                <h1>VS</h1><img src="../../../assets/articles/grande main.webp" title="Webp de 34ko" alt="Webp">
+            </div>
+            <br>
+            <p><a href="https://www.online-convert.com/" target="blank">un convertisseur qui fait ses preuves</a>
+            </p>
+            <p><a href="https://images.guide/" target="blank">un tutoriel complet sur les images</a>
+            </p>
+        </div>
+    </div>
+
+</div>

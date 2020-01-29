@@ -1,0 +1,393 @@
+<div class="container">
+    <div class="poleTitle">
+        <p id="ecosystem">Transformez votre Rasberry pi 4 en serveur / Cloud</p>
+    </div>
+    <p><br></p>
+    <p><br></p>
+    <p>télécharger l'image officielle de r Pi 4 sur le <a href="https://www.raspberrypi.org/downloads/raspbian/" target="blank">site (raspbian)</a> </p>
+    <p>flachez votre carte microSD via <a href="https://www.balena.io/etcher/">etcher</a></p>
+    <img class="img" src="../../../assets/articles/etcher.webp" alt="etcher">
+    <p>configurer le premier démarrage</p>
+    <img class="img" src="../../../assets/articles/Raspbian-Buster-first-time.webp" alt="premier démarrage">
+
+    <h2 style="margin-top: 5em;">Votre Site web</h2>
+    <p>Nous allons d’abord installer un serveur web pour votre site
+        <a href="https://raspberry-pi.fr/installer-serveur-web-raspberry-lamp/">( tuto )</a>
+    </p>
+    <h3>Installation d’Apache</h3>
+    <p>Avant d’installer le serveur, assurons nous d’avoir une machine bien à jour. Pour ce faire nous devons posséder les droits administrateur, soit en étant connecté en root, soit via la commande sudo.</p>
+    <div class="code">
+        <code>
+        <p>sudo apt update <br> 
+        sudo apt upgrade <br>
+        sudo apt update</p>
+    </code>
+    </div>
+    <p>Une fois la Raspberry Pi à jour, nous allons installer le serveur Apache.</p>
+    <div class="code">
+        <code>
+        <p>sudo apt install apache2</p> 
+    </code>
+    </div>
+    <p>Au passage, nous allons en profiter pour donner des droits au dossier d’apache qui vous permettra de facilement administrer les sites. Pour cela, lancez les commandes suivantes :</p>
+    <div class="code">
+        <code>
+        <p>sudo chown -R pi:www-data /var/www/html/</p> 
+    </code>
+    </div>
+    <p>ou</p>
+    <div class="code">
+        <code>
+        <p>sudo chown -R pi(ou user) /var/www</p> 
+    </code>
+    </div>
+    <p>puis</p>
+    <div class="code">
+        <code>
+        <p>sudo chmod -R 770 /var/www/html/</p> 
+    </code>
+    </div>
+    <p>Vérifier qu’Apache fonctionne</p>
+    <p>Une fois l’installation terminée, nous pouvons tester qu’Apache fonctionne correctement en nous rendant sur l’adresse de la Raspberry.</p>
+    <p>Pour cela, il faut tenter d’accéder à la Raspberry depuis le port 80 (ce port n’étant pas encore ouvert depuis l’extérieur, il faudra le faire depuis la Raspberry elle-même). Ne vous inquiétez pas, c’est très facile. Il vous suffit d’ouvrir le navigateur
+        web de la Raspberry (par défaut Midori sous Raspbian), et d’aller à l’adresse « http://127.0.0.1 ». Vous devriez alors obtenir une page avec un message du genre « It works! » et plein d’autre texte.</p>
+    <h3>Installation de PHP sur la Raspberry</h3>
+    <p>On va encore une fois faire appel à l’administrateur pour installer PHP avec la ligne de commande.</p>
+    <div class="code">
+        <code>
+            <p>sudo apt install php php-mbstring</p> 
+        </code>
+    </div>
+    <p>Vérifier que PHP fonctionne</p>
+    <p>Pour savoir si PHP fonctionne correctement, ce n’est pas très compliqué, et la méthode est relativement proche de celle employée pour Apache. Vous allez en premier lieu supprimer le fichier « index.html » dans le répertoire « /var/www/html ».
+    </p>
+    <div class="code">
+        <code>
+            <p>sudo rm /var/www/html/index.html</p> 
+        </code>
+    </div>
+    <p>Puis créez un fichier « index.php » dans ce répertoire, avec cette ligne de commande
+    </p>
+    <img class="img" src="../../../assets/articles/php.jpg" alt="">
+    <p>À partir de là, le fonctionnement est le même que pour la vérification d’Apache. Vous tentez d’accéder à votre page, et vous devriez avoir un résultat proche de cette image (si vous n’avez pas d’interface, utilisez la même méthode que précédemment,
+        et cherchez les mots « PHP Version »).</p>
+    <img class="img" src="../../../assets/articles/phpinfo.webp" alt="php">
+    <p>Tableau généré par la commande phpinfo sur une raspberry.</p>
+    <h3>Une base de données MySQL pour votre serveur</h3>
+    <p>Installer MySQL</p>
+    <p>Pour ce faire, nous allons installer mysql-server et php-mysql (qui servira de lien entre php et mysql)</p>
+    <div class="code">
+        <code>
+    <p>sudo apt install mariadb-server php-mysql</p> 
+</code>
+    </div>
+    <strong>Vérifier que MySQL marche correctement</strong>
+    <p>Pour vérifier le fonctionnement de MySQL, cette fois nous utiliserons uniquement la ligne de commande. Pour cela, nous allons simplement nous connecter via la commande :</p>
+    <div class="code">
+        <code>
+    <p>sudo mysql --user=root</p> 
+</code>
+    </div>
+    <p>Nous allons maintenant supprimer l’utilisateur root et créer un nouvel utilisateur root, car celui par défaut n’est utilisable que par le compte administrateur du système, et n’est donc pas accessible aux script PHP du serveur.
+    </p>
+    <p>Pour cela, une fois connecté à MySQL, lancez les commandes suivantes (remplacez password par le mot de passe de votre choix) :</p>
+    <div class="code">
+        <code>
+    <p>DROP USER 'root'@'localhost';<br>
+        CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';<br>
+        GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+        </p> 
+</code>
+    </div>
+    <p>Puis quitter</p>
+    <div class="code">
+        <code>
+    <p>quit</p> 
+</code>
+    </div>
+    <p>Vous avez donc maintenant un serveur web, relié à PHP et à MySQL. Soit tout ce qu’il faut. Vous pouvez donc vous arrêter ici.</p>
+    <p>(Lors de vos prochaine connections, vous pourrez donc utilisez la commande mysql --user=root --password=votremotdepasse).
+    </p>
+    <hr>
+    <h2>Rendre votre raspberry pi accessible depuis le web</h2>
+    <h3>Rediriger les requêtes vers le serveur Apache sur Raspbian</h3>
+    <p>Dans un premier temps, il va donc falloir faire en sorte que lors d’une requête sur votre box, qui est la seule à être accessible depuis l’extérieur, celle-ci soit redirigée vers votre Raspberry Pi, pour qu’elle soit traitée par le service adapté
+        (en l’occurrence le serveur Apache2).</p>
+    <p>Pour cela, il va falloir accéder à l’interface de configuration de votre box. L’accès se fait différemment selon votre Fournisseur d’Accès Internet. Il faut donc que vous cherchiez (par exemple sur le site de votre fournisseur d’accès, ou plus simplement
+        via votre moteur de recherche préféré) comment accéder à l’interface d’administration de votre box. Une fois sur l’interface d’administration, et après vous être authentifié, vous allez pouvoir ouvrir les ports de votre box et rediriger les requêtes
+        vers le serveur Apache. Cette configuration se fait dans une partie qui peut avoir plusieurs noms, « configuration NAT », « Gestion des redirections de ports », « port forwading », etc.
+    </p>
+    <p>Une fois que vous êtes dans la catégorie de configuration adaptée, le reste de la procédure est sensiblement équivalente pour l’ensemble des FAI. Vous allez mettre en place deux redirections différentes :</p>
+    <table>
+        <tr>
+            <td>
+                Type de requête
+            </td>
+            <td>
+                Port externe de la requête
+            </td>
+            <td>
+                Port interne de la redirection
+            </td>
+            <td>
+                Protocole employé
+            </td>
+            <td>
+                Équipement cible
+            </td>
+        </tr>
+        <tr>
+            <td>
+                HTTP
+            </td>
+            <td>
+                80
+            </td>
+            <td>
+                80
+            </td>
+            <td>
+                TCP
+            </td>
+            <td>
+                raspberry*
+            </td>
+        </tr>
+        <tr>
+            <td>
+                HTTPS
+            </td>
+            <td>
+                443
+            </td>
+            <td>
+                443
+            </td>
+            <td>
+                tcp
+            </td>
+            <td>
+                raspberry*
+            </td>
+        </tr>
+    </table>
+    <p style="font-size: 0.8em;">*raspberry peut correspondre soit au nom de votre Raspberry Pi, soit à son adresse IP sur le réseau interne.</p>
+    <p>Vous pouvez trouver cette dernière via l’utilisation de la commande</p>
+    <div class="code">
+        <code>
+<p>sudo ifconfig</p> 
+</code>
+    </div>
+    <p>l’adresse devrait à priori être de la forme 192.168.*.* Si vous êtes connecté par câble Ethernet, il s’agira probablement de celle suivant le « inet addr : », dans la partie eth0.
+    </p>
+    <p>Chez Bouygues par exemple on va sur l’adresse : <strong>192.168.1.254</strong> </p>
+    <p>Puis sur les services de la box</p>
+    <img class="img" src="../../../assets/articles/bouyguesaccueil.webp" alt="bouygues">
+    <p>Puis la ligne du dessous dans la redirection de ports on va accorder l’accès à notre Raspberry.</p>
+    <p>Dans la rubrique NAT & PAT on ajoute 2 règles sur les ports 80 et 443 pour laisser passer ses ports et les rediriger directement sur le Raspberry.</p>
+    <p>En mettant en place ces redirections, vous allez en fait rediriger les requêtes web, c’est-à-dire celles utilisant les protocoles HTTP (port 80) et HTTPS (port 443), vers votre système Raspbian, qui fait tourner le serveur Apache2.</p>
+    <p>Lors de la réception d’une requête par votre box, elle la redirigera donc sur votre Raspberry, ou elle sera analysée par Apache, qui retournera au client qui a effectué la requête les ressources adaptées.
+    </p>
+    <img src="../../../assets/articles/natpat.webp" alt="natpat" class="img">
+    <p>Voici un autre un petit schéma du comportement de votre box lors d’une requête sur votre IP depuis un réseau externe, une fois les redirections de ports ajoutées.</p>
+    <img src="../../../assets/articles/shemainternet.webp" alt="internet" class="img">
+    <p>Voilà, votre serveur web est désormais accessible depuis l’extérieur. Vous pouvez donc vous arrêter là. Cependant, vous ne pouvez y accéder que par votre adresse IP, ce qui n’est pas vraiment pratique (tout particulièrement si cette dernière est dynamique,
+        comme c’est le cas par exemple chez Orange, et si elle ne peut pas être fixée gratuitement par votre FAI, comme chez Orange, encore…).
+    </p>
+    <p>Voir la section du tuto sur le DynDNS et les IP non fixes avec cet autre tuto très complet :</p>
+    <a href="https://pimylifeup.com/raspberry-pi-port-forwarding/" target="blank">https://pimylifeup.com/raspberry-pi-port-forwarding/</a>
+    <hr>
+    <h2>Nextcloud</h2>
+    <p>Tuto : </p><a href="https://pimylifeup.com/raspberry-pi-nextcloud-server/" target="blank">https://pimylifeup.com/raspberry-pi-nextcloud-server/</a>
+    <p>On repart de zéro en remettant à jour le RPI</p>
+    <div class="code">
+        <code>
+<p>sudo apt-get update <br>
+sudo apt-get upgrade
+</p> 
+</code>
+    </div>
+    <p>On met à jour certains packages php</p>
+    <div class="code">
+        <code>
+<p>sudo apt-get install php7.3 php7.3-gd sqlite php7.3-sqlite3 php7.3-curl php7.3-zip php7.3-xml php7.3-mbstring</p> 
+</code>
+    </div>
+    <p>et on redémarre le serveur</p>
+    <div class="code">
+        <code>
+<p>sudo service apache2 restart</p> 
+</code>
+    </div>
+    <p>Installation de NextCloud <br> On va dans le dossier html avec le terminal
+    </p>
+    <div class="code">
+        <code>
+<p>cd /var/www/html</p> 
+</code>
+    </div>
+    <p>On y télécharge la dernière version de nextcloud, pour moi la 16.0.3 mais on peut changer cette version qui se trouve sur le site nextcloud</p>
+    <div class="code">
+        <code>
+            <p>curl https://download.nextcloud.com/server/releases/nextcloud-16.0.5.tar.bz2 | sudo tar -jxv</p> 
+        </code>
+    </div>
+    <p>On crée un dossier pour qu’il fonctionne au premier démarrage</p>
+    <div class="code">
+        <code>
+            <p>sudo mkdir -p /var/www/html/nextcloud/data</p> 
+        </code>
+    </div>
+    <p>on donne les droits au groupe d’utilisateur</p>
+    <div class="code">
+        <code>
+            <p>sudo chown -R www-data:www-data /var/www/html/nextcloud/</p> 
+        </code>
+    </div>
+    <p>et on donne la permission finale</p>
+    <div class="code">
+        <code>
+    <p>sudo chmod 750 /var/www/html/nextcloud/data</p> 
+</code>
+    </div>
+    <p>On peut aller faire le premier démarrage à l’adresse dans le navigateur</p>
+    <p>votreIP/nextcloud de type 192.168.1.XXX/nextcloud</p>
+    <img src="../../../assets/articles/accueilnext.webp" alt="nextcloud" class="img">
+    <p>On vous laisse un peu le découvrir, le configurer. Il est désormais utilisable sur le réseau</p>
+    <h4>Déplacement du dossier DATA</h4>
+    <p>Pour plus de sécurité on va déplacer les data dans un dossier moins accessible. On crée le dossier
+    </p>
+    <div class="code">
+        <code>
+            <p>sudo mkdir -p /var/nextcloud</p> 
+        </code>
+    </div>
+    <p>On déplace les données</p>
+    <div class="code">
+        <code>
+            <p>sudo mv -v /var/www/html/nextcloud/data /var/nextcloud/data</p> 
+        </code>
+    </div>
+    <p>On le configure dans nextcloud en ouvrant le fichier de config</p>
+    <div class="code">
+        <code>
+            <p>cd /var/www/html/nextcloud/config <br>
+                sudo cp -p config.php config.php.bk <br>
+                sudo nano config.php
+                </p> 
+        </code>
+    </div>
+    <p>Sur la ligne </p>
+    <div class="code">
+        <code>
+            <p>'datadirectory' => '/var/www/html/nextcloud/data',</p> 
+        </code>
+    </div>
+    <p>On remplace par </p>
+    <div class="code">
+        <code>
+            <p>'datadirectory' => '/var/nextcloud/data',</p> 
+        </code>
+    </div>
+    <p>Et on sort en enregistrant depuis nano avec les commandes Ctrl+X et o pour oui et Enter</p>
+    <h4>Autoriser l’accès à nextcloud depuis l’extérieur</h4>
+    <p>Il y a encore le problème des port forwarding pur autoriser d’autres accès que le réseau privé. On ouvre le fichier de config
+    </p>
+    <div class="code">
+        <code>
+            <p>sudo nano /var/www/html/nextcloud/config/config.php</p> 
+        </code>
+    </div>
+    <p>Dans le tableau de trusted domains on rajoute son adresse, son ip fixe…</p>
+    <div class="code">
+        <code>
+            <p>'trusted_domains' => <br>
+                array (<br>
+                    0 => '192.168.1.00',<br>
+                    1 => 'IPfixe de la box.XXX', (exemple 89.88.39.199 pour ma box) <br>
+                    2=> 'mondomaine.fr',<br>
+                ),</p> 
+        </code>
+    </div>
+    <p>Vous avez terminé, il ne reste qu'à installer les applis android, mac os, windows ou ubuntu !</p>
+    <hr>
+    <H2>Serveur FTP</H2>
+    <p>Tuto : <a href="https://www.raspberrypi-spy.co.uk/2018/05/creating-ftp-server-with-raspberry-pi/" target="blank">https://www.raspberrypi-spy.co.uk/2018/05/creating-ftp-server-with-raspberry-pi/</a>
+    </p>
+    <h3>Préparez le serveur</h3>
+    <p>récupérez votre IP</p>
+    <div class="code">
+        <code>
+    <p>ifconfig</p> 
+</code>
+    </div>
+    <p>installez vsftpd</p>
+    <div class="code">
+        <code>
+    <p>sudo apt-get update <br>
+        sudo apt-get install vsftpd</p> 
+</code>
+    </div>
+    <p>Mettez à jour la configuration</p>
+    <div class="code">
+        <code>
+    <p>sudo nano /etc/vsftpd.conf</p> 
+</code>
+    </div>
+    <p>dans le fichier activez les ligne suivantes en enlevant le # devant la phrase</p>
+    <div class="code">
+        <code>
+    <p>anonymous_enable=NO <br>
+        local_enable=YES<br>
+        write_enable=YES<br>
+        local_umask=022<br>
+        chroot_local_user=YES
+        </p> 
+</code>
+    </div>
+    <p>à la fin du fichier ajoutez</p>
+    <div class="code">
+        <code>
+    <p>user_sub_token=$USER <br>
+        local_root=/home/$USER/ftp
+        
+        </p> 
+</code>
+    </div>
+    <p>Puis enregistrez et quittez avec Ctrl X, puis o pour oui et finalement Enter</p>
+    <h3>Créer son dossier FTP</h3>
+    <p>On crée les dossiers</p>
+    <div class="code">
+        <code>
+    <p>mkdir /home/pi/ftp <br>
+        mkdir /home/pi/ftp/files
+        </p> 
+</code>
+    </div>
+    <p>On y autorise lecture et écriture</p>
+    <div class="code">
+        <code>
+    <p>chmod a-w /home/pi/ftp</p> 
+</code>
+    </div>
+    <p>On redémarre le serveur</p>
+    <div class="code">
+        <code>
+    <p>sudo service vsftpd restart</p> 
+</code>
+    </div>
+    <h3>Test du Serveur</h3>
+    <p>On va sur un autre ordinateur et on ouvre son client FTP</p>
+    <img src="../../../assets/articles/ftp1.webp" alt="ftp" class="img">
+    <p>On rentre son IP locale en Hote si on est sur le même réseau. Sinon l’IP de la Box</p>
+    <p>Le port est toujours le 21</p>
+    <p>Le nom et mot de passe son ceux de l’utilisateur en lien avec le dossier.</p>
+    <img src="../../../assets/articles/ftp2.webp" alt="ftp" class="img">
+    <p>Normalement c’est tout bon</p>
+    <hr>
+    <H2>Pour aller plus loin</H2>
+    <p>Faire fonctionner votre FTP avec ProFtp <a href="http://www.vous-etes-au-top.com/blog/faq/creer-un-acces-ftp-avec-proftpd-vers-le-repertoire-varwww-en-sshresolu.html" target="blank">C'est ici</a></p>
+    <p>pour vous simplifier la vie vous pouvez utiliser une tablette Android en tant qu'écran pour Raspberry Pi <a href="https://fr.tipsandtrics.com/how-use-an-android-tablet-755431">C'est ici</a></p>
+    <p>Vous souhaitez cloner, sauvegarder tout votre système raspberry sur un autre support au cas où ? (tuto non testé à ce jour) <a href="https://creativetest.ovh/les-tutos/raspberrypi/tuto-cloner-une-carte-sd-pour-tout-systeme-du-raspberry-pi/">C'est par ici</a></p>
+</div>
+<img src="../../../assets/accueil/pageup.svg" id="le_bouton" OnClick='window.location.href="/articles/tutoRaspi"'>
