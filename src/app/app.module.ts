@@ -30,12 +30,8 @@ const appRoutes: Routes = [
       {path: 'poles', component: PolesComponent},
     ]
   },
-  //{
-  //   path: 'accueil',
-  //   component: ContainerComponent
-  // },
   {
-    path: '#poles',
+    path: 'poles',
     component: ContainerComponent
   },
   {

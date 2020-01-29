@@ -11,7 +11,7 @@ export class BonnesPratiquesComponent implements OnInit {
     url: "../../assets/articles/rounded-plug.svg",
     titre: "Couper le courant la nuit",
     description: "Nous coupons le courant la nuit pour économiser 25 % d 'électricité sur la box",
-    modalText: "Depuis plusieurs mois nous la coupons la nuit, pour éviter le flux de data qu 'elle génère naturellement alors que nous dormons, pour l'électricité(11 w chez bouygues) et pour couper le wifi fort inutile la nuit. < br > Solution low tech: la prise horaire...3, 99€",
+    modalText: "Depuis plusieurs mois nous la coupons la nuit, pour éviter le flux de data qu 'elle génère naturellement alors que nous dormons, pour l'électricité(11 w chez bouygues) et pour couper le wifi fort inutile la nuit. Solution low tech: la prise horaire...3, 99€",
     link: "",
     linkText: ""
 },
@@ -20,7 +20,7 @@ export class BonnesPratiquesComponent implements OnInit {
     titre: "Héberger son site web sur un raspberry pi",
     description: "Nous hébergeons nous même notre site et notre cloud",
     modalText: "OpenCyLife héberge son site ainsi que le cloud des membres sur un simple Raspberry.Vous pouvez essayer de votre côté.L 'autohébergement vous fera économiser à la fois le coût d'un hébergeur et d 'un service cloud. De plus vous redevenez propriétaire de vos données",
-    link: "../../articles/tuto/tuto.html",
+    link: "https://www.open-cy.life/articles/tuto/tuto.html",
     linkText: "Notre Tuto pour l'auto hébergement"
 },
 {
@@ -67,7 +67,7 @@ export class BonnesPratiquesComponent implements OnInit {
     url: "../../assets/articles/laptop.svg",
     titre: "Acheter reconditionné",
     description: "A-t 'on vraiment toujours besoin de neuf ?",
-    modalText: 'Le renouvellement moyen pour un smartphone est de 2 ans en France et pour un ordinateur, nous passons à 4 ans pour un portable et 5 ans pour un fixe.Le recyclage est très en retard et cela coûte des ressources non renouvelable ( <a href="https://www.open-cy.life/articles/terres_rares/terresrares.html" target="blank">voir notre article sur les terres rares</a> ). Un ordinateur un peu vieux ou un smartphone fonctionnel sont toujours revendables et de nombreux sites vendent aujourd\'\hui des appareils parfaitements reconditionnés avec des garanties.',
+    modalText: 'Le renouvellement moyen pour un smartphone est de 2 ans en France et pour un ordinateur, nous passons à 4 ans pour un portable et 5 ans pour un fixe.Le recyclage est très en retard et cela coûte des ressources non renouvelable (voir notre article sur les terres rares). Un ordinateur un peu vieux ou un smartphone fonctionnel sont toujours revendables et de nombreux sites vendent aujourd\'\hui des appareils parfaitements reconditionnés avec des garanties.',
     link: "https://www.backmarket.fr/",
     linkText: "L'exemple de Backmarket"
 },
@@ -121,15 +121,22 @@ export class BonnesPratiquesComponent implements OnInit {
     url: "../../assets/articles/folder.svg",
     titre: "Nettoyer régulièrement ses données",
     description: "Les données créent de l'obsolescence",
-    modalText: "Nettoyer régulièrement ses données : applications sur le smartphone <br> => je me sers de quoi ? <br> je supprime quoi ? <br> idem pour ordinateurs,  tablettes, photos,... <br> mes données sont un nid à obsolescence. Elles remplissent l'espace, me font perdre du temps, ralentissent mon matériel.",
-    link: "",
-    linkText: ""
+    modalText: "Il faut nettoyer régulièrement ses données et les applications sur le smartphone. Je me pose des questions. De quoi je me sers, qu'est ce qui vaut la peine d'être conservé ?",
+    modalText2: "Idem pour ordinateurs,  tablettes, photos,... Mes données sont un nid à obsolescence. Elles remplissent l'espace, me font perdre du temps, ralentissent mon matériel."
 },
 {
     url: "../../assets/articles/envelope.svg",
     titre: "Bonne pratiques mail",
     description: "La part du colibri, la part du monstre",
-    modalText: "Vous le savez, votre boite mail est probablement stockée à 1000 ou 10000 km, elle pèse lourd dans un data center queslques part.Quelques bonnes pratique pour ranger comme Marie Kondo <br><br> - Envoyer le moins de courriels possible au moins d’ interlocuteurs possible <br> - Choisir un format texte plutôt que HTML <br> - Limiter le contenu au strict nécessaire(supprimer les signatures graphiques) <br> - Eviter les pièces jointes <br> - Se désabonner des newsletters <br> - Ne pas imprimer <br> - Eviter la 4 G <br> - Abandonner le répondre à tous, surtout en automatique",
+    modalText: "Vous le savez, votre boite mail est probablement stockée à 1000 ou 10000 km, elle pèse lourd dans un data center queslques part. Quelques bonnes pratique pour ranger comme Marie Kondo",
+    modalText2:"- Envoyer le moins de courriels possible au moins d’ interlocuteurs possible ",
+    modalText3:"- Choisir un format texte plutôt que HTML",
+    modalText4:"- Limiter le contenu au strict nécessaire(supprimer les signatures graphiques)",
+    modalText5:"- Eviter les pièces jointes",
+    modalText6:"- Abandonner le répondre à tous, surtout en automatique",
+    modalText7:"- Ne pas imprimer",
+    modalText8:"- Se désabonner des newsletters",
+    modalText9:"- Eviter la 4 G",
     link: "https://www.greenit.fr/2018/09/11/reduire-limpact-de-e-mails/",
     linkText: "Green.it"
 },
@@ -156,6 +163,23 @@ export class BonnesPratiquesComponent implements OnInit {
     modalText: "Formez-vous à l'utilisation du numérique. Plus on est formé mieux on maîtrise ces outils et mieux on sait comment limiter les mauvaises pratiques.<br>Aujourd'hui, on n'a jamais aussi peu compris comment fonctionne le numérique.<br>Selon une étude sur 1000 points, les salariés français ont obtenu 291 et les digital natives 275 points. On sait envoyer un snap mais on a aucune d’idée de son poids par rapport à un SMS<br><small>sondage OpinionWay et le cabinet de conseil en stratégie SBT Human(s) Matter</small>",
     link: "https://www.open-cy.life/",
     linkText: "OpenCyLife"
+},
+{
+    url: "../../assets/articles/picture.svg",
+    titre: "Revoir son image",
+    description: "Une photo non compressée peut peser comme une petite vidéo",
+    modalText: "Une image peut faire toute la différence sur un site internet. Voyez déjà si vous en avez besoin avant de la poster. Sinon voyez les exemples suivant : pour un appareil 20 mégapixels",
+    modalText2:"- un fichier brut de capteur type RAW : eviron 35Mo",
+    modalText3:"- le Jpeg qui en découle Jpeg : environ 8Mo",
+    modalText4:"- Un Jpeg compressé à la taille de votre écran : environ 1Mo",
+    modalText5:"- La même photo compressée en WebP : environ 200Ko soit 175 fois plus petite",
+    modalText6:"On peut aller encore plus loin mais déjà, en vrai, ça donne quoi ?",
+    url1:"../../../assets/articles/grande main.jpg",
+    urlText1:"Jpeg de 113ko",
+    url2:"../../../assets/articles/grande main.webp",
+    urlText2:"Webp de 34ko",
+    link: "https://images.guide/",
+    linkText: "un tutoriel complet sur les images"
 }
 ];
   constructor() { }
