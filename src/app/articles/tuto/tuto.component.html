@@ -6,9 +6,9 @@
     <p><br></p>
     <p>télécharger l'image officielle de r Pi 4 sur le <a href="https://www.raspberrypi.org/downloads/raspbian/" target="blank">site (raspbian)</a> </p>
     <p>flachez votre carte microSD via <a href="https://www.balena.io/etcher/">etcher</a></p>
-    <img class="img" src="../../../assets/articles/etcher.webp" alt="etcher">
+    <img class="img" src="../../../assets/articles/tuto/etcher.webp" alt="etcher">
     <p>configurer le premier démarrage</p>
-    <img class="img" src="../../../assets/articles/Raspbian-Buster-first-time.webp" alt="premier démarrage">
+    <img class="img" src="../../../assets/articles/tuto/Raspbian-Buster-first-time.webp" alt="premier démarrage">
 
     <h2 style="margin-top: 5em;">Votre Site web</h2>
     <p>Nous allons d’abord installer un serveur web pour votre site
@@ -68,10 +68,10 @@
     </div>
     <p>Puis créez un fichier « index.php » dans ce répertoire, avec cette ligne de commande
     </p>
-    <img class="img" src="../../../assets/articles/php.jpg" alt="">
+    <img class="img" src="../../../assets/articles/tuto/php.jpg" alt="">
     <p>À partir de là, le fonctionnement est le même que pour la vérification d’Apache. Vous tentez d’accéder à votre page, et vous devriez avoir un résultat proche de cette image (si vous n’avez pas d’interface, utilisez la même méthode que précédemment,
         et cherchez les mots « PHP Version »).</p>
-    <img class="img" src="../../../assets/articles/phpinfo.webp" alt="php">
+    <img class="img" src="../../../assets/articles/tuto/phpinfo.webp" alt="php">
     <p>Tableau généré par la commande phpinfo sur une raspberry.</p>
     <h3>Une base de données MySQL pour votre serveur</h3>
     <p>Installer MySQL</p>
@@ -182,15 +182,15 @@
     </p>
     <p>Chez Bouygues par exemple on va sur l’adresse : <strong>192.168.1.254</strong> </p>
     <p>Puis sur les services de la box</p>
-    <img class="img" src="../../../assets/articles/bouyguesaccueil.webp" alt="bouygues">
+    <img class="img" src="../../../assets/articles/tuto/bouyguesaccueil.webp" alt="bouygues">
     <p>Puis la ligne du dessous dans la redirection de ports on va accorder l’accès à notre Raspberry.</p>
     <p>Dans la rubrique NAT & PAT on ajoute 2 règles sur les ports 80 et 443 pour laisser passer ses ports et les rediriger directement sur le Raspberry.</p>
     <p>En mettant en place ces redirections, vous allez en fait rediriger les requêtes web, c’est-à-dire celles utilisant les protocoles HTTP (port 80) et HTTPS (port 443), vers votre système Raspbian, qui fait tourner le serveur Apache2.</p>
     <p>Lors de la réception d’une requête par votre box, elle la redirigera donc sur votre Raspberry, ou elle sera analysée par Apache, qui retournera au client qui a effectué la requête les ressources adaptées.
     </p>
-    <img src="../../../assets/articles/natpat.webp" alt="natpat" class="img">
+    <img src="../../../assets/articles/tuto/natpat.webp" alt="natpat" class="img">
     <p>Voici un autre un petit schéma du comportement de votre box lors d’une requête sur votre IP depuis un réseau externe, une fois les redirections de ports ajoutées.</p>
-    <img src="../../../assets/articles/shemainternet.webp" alt="internet" class="img">
+    <img src="../../../assets/articles/tuto/shemainternet.webp" alt="internet" class="img">
     <p>Voilà, votre serveur web est désormais accessible depuis l’extérieur. Vous pouvez donc vous arrêter là. Cependant, vous ne pouvez y accéder que par votre adresse IP, ce qui n’est pas vraiment pratique (tout particulièrement si cette dernière est dynamique,
         comme c’est le cas par exemple chez Orange, et si elle ne peut pas être fixée gratuitement par votre FAI, comme chez Orange, encore…).
     </p>
@@ -252,7 +252,7 @@ sudo apt-get upgrade
     </div>
     <p>On peut aller faire le premier démarrage à l’adresse dans le navigateur</p>
     <p>votreIP/nextcloud de type 192.168.1.XXX/nextcloud</p>
-    <img src="../../../assets/articles/accueilnext.webp" alt="nextcloud" class="img">
+    <img src="../../../assets/articles/tuto/accueilnext.webp" alt="nextcloud" class="img">
     <p>On vous laisse un peu le découvrir, le configurer. Il est désormais utilisable sur le réseau</p>
     <h4>Déplacement du dossier DATA</h4>
     <p>Pour plus de sécurité on va déplacer les data dans un dossier moins accessible. On crée le dossier
@@ -378,11 +378,11 @@ sudo apt-get upgrade
     </div>
     <h3>Test du Serveur</h3>
     <p>On va sur un autre ordinateur et on ouvre son client FTP</p>
-    <img src="../../../assets/articles/ftp1.webp" alt="ftp" class="img">
+    <img src="../../../assets/articles/tuto/ftp1.webp" alt="ftp" class="img">
     <p>On rentre son IP locale en Hote si on est sur le même réseau. Sinon l’IP de la Box</p>
     <p>Le port est toujours le 21</p>
     <p>Le nom et mot de passe son ceux de l’utilisateur en lien avec le dossier.</p>
-    <img src="../../../assets/articles/ftp2.webp" alt="ftp" class="img">
+    <img src="../../../assets/articles/tuto/ftp2.webp" alt="ftp" class="img">
     <p>Normalement c’est tout bon</p>
     <hr>
     <H2>Pour aller plus loin</H2>

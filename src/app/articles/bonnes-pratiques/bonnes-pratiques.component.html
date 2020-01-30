@@ -38,8 +38,8 @@
                 <p>{{Pratique.modalText9}}</p>
                 <br>
                 <div class="row">
-                    <img src="{{Pratique.url1}}" title="{{Pratique.urlText1}}">
-                    <img src="{{Pratique.url2}}" title="{{Pratique.urlText2}}">
+                    <img *ngIf="Pratique.url1" src="{{Pratique.url1}}" title="{{Pratique.urlText1}}">
+                    <img *ngIf="Pratique.url2" src="{{Pratique.url2}}" title="{{Pratique.urlText2}}">
                 </div>
                 <br>
                 <p><a href="{{Pratique.link}}" target="blank">{{Pratique.linkText}}</a></p>
