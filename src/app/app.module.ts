@@ -54,12 +54,11 @@ const appRoutes: Routes = [
     path: 'articles/rebond',
     component: RebondComponent
   },
-  // {
-  //   path: 'formation',
-  //   component: FormationComponent
-  // },
+  {
+    path: 'formation',
+    component: FormationComponent
+  },
   { path: '**', redirectTo: '' },
-
 ];
 
 @NgModule({
