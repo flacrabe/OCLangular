@@ -25,8 +25,8 @@ const appRoutes: Routes = [
     component:MissionComponent
   },
       {path: 'mission', component: MissionComponent},
-      {path: 'principes', component: PrincipesComponent},
-      {path: 'anctions', component: ActionsComponent},
+      // {path: 'principes', component: PrincipesComponent},
+      {path: 'actions', component: ActionsComponent},
       {path: 'ecosysteme', component: EcosystemeComponent},
       {path: 'poles', component: PolesComponent},
   {

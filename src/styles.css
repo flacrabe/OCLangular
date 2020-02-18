@@ -142,8 +142,6 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    widows: 100%;
 }
 
 .poleIcons {
@@ -201,47 +199,19 @@ body {
 .partenaires {
     display: flex;
     flex-direction: row;
-    align-items: stretch;
     justify-content: space-around;
-    width: 100vh;
-}
-
-.partenaireslow {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: space-around;
-    width: 100vh;
-    margin-top: 3%;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .iconsPartners {
-    widows: 110px;
+    width: 110px;
     height: 110px;
 }
 
-.poleContact {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vh;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 13%;
-}
-
-.contactIcons {
-    width: 100px;
-    height: 100px;
-    align-items: center;
-}
-
-#contact {
-    font-family: trebuchet, helvetica, sans-serif;
-    font-size: 1.2em;
-    color: #282825;
-    text-align: center;
+.iconReseaux {
+    width: 70px;
+    height: 70px;
 }
 
 .containerPole {
@@ -285,7 +255,7 @@ body {
     border-radius: 15px;
     font-size: medium;
     align-content: center;
-    min-width: 300px;
+    max-width: 400px;
     margin-bottom: 25px;
 }
 
@@ -344,6 +314,7 @@ body {
     flex-direction: column;
     align-self: flex-start;
     padding-left: 30px;
+    line-height: 22px;
     font-size: 1.2em;
     font-family: trebuchet, helvetica, sans-serif;
 }
