@@ -2,11 +2,6 @@ body {
     font: 100% Helvetica, sans-serif;
 }
 
-.header {
-    display: flex;
-    flex-direction: column;
-}
-
 .col8 {
     width: 80%;
 }
@@ -18,7 +13,47 @@ body {
     align-items: center;
 }
 
-#pageTitle {
+.col-1 {
+    width: 10%;
+}
+
+.col-2 {
+    width: 20%;
+}
+
+.col-3 {
+    width: 30%;
+}
+
+.col-4 {
+    width: 40%;
+}
+
+.col-5 {
+    width: 50%;
+}
+
+.col-6 {
+    width: 60%;
+}
+
+.col-7 {
+    width: 70%;
+}
+
+.col-8 {
+    width: 80%;
+}
+
+.col-9 {
+    width: 90%;
+}
+
+.col-10 {
+    width: 100%;
+}
+
+.pageTitle {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -30,31 +65,18 @@ body {
     margin-bottom: 3%;
 }
 
-
-/* #le_bouton {
-    position: -webkit-sticky;
-    position: fixed;
-    bottom: 100px;
-    right: 50px;
-    opacity: 0.5;
-    width: 50px;
-    height: 50px;
-} */
-
 #headerTitle {
     font-family: trebuchet, helvetica, sans-serif;
     color: #282825;
     font-size: 30px;
     margin-top: 50px;
-    position: relative;
     align-items: center;
-    margin-right: 15%;
 }
 
 #eco {
     display: flex;
     flex-direction: column;
-    margin-top: 5%;
+    line-height: 5px;
 }
 
 #logoOpen {

@@ -22,18 +22,13 @@ import { RebondComponent } from './articles/rebond/rebond.component';
 const appRoutes: Routes = [
   {
     path: '',
-    component: ContainerComponent, children: [
+    component:MissionComponent
+  },
       {path: 'mission', component: MissionComponent},
       {path: 'principes', component: PrincipesComponent},
       {path: 'anctions', component: ActionsComponent},
       {path: 'ecosysteme', component: EcosystemeComponent},
       {path: 'poles', component: PolesComponent},
-    ]
-  },
-  {
-    path: 'poles',
-    component: ContainerComponent
-  },
   {
     path: 'articles',
     component: ArticlesComponent
