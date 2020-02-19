@@ -15,46 +15,6 @@ body {
     align-items: center;
 }
 
-.col-1 {
-    width: 10%;
-}
-
-.col-2 {
-    width: 20%;
-}
-
-.col-3 {
-    width: 30%;
-}
-
-.col-4 {
-    width: 40%;
-}
-
-.col-5 {
-    width: 50%;
-}
-
-.col-6 {
-    width: 60%;
-}
-
-.col-7 {
-    width: 70%;
-}
-
-.col-8 {
-    width: 80%;
-}
-
-.col-9 {
-    width: 90%;
-}
-
-.col-10 {
-    width: 100%;
-}
-
 a:link,
 a:active,
 a:visited {
@@ -86,6 +46,11 @@ H1 {
     text-align: center;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
 
 /* header */
 
@@ -93,8 +58,6 @@ H1 {
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    padding-left: 30px;
-    line-height: 22px;
     font-size: 1.2em;
     font-family: trebuchet, helvetica, sans-serif;
 }
@@ -236,12 +199,44 @@ header {
 }
 
 
+/* footer */
+
+.ecoConcept {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.ecoConcept img {
+    z-index: 1;
+    opacity: 0.5;
+    position: absolute;
+    width: 90px;
+    height: 90px;
+}
+
+.ecoConcept p {
+    color: rgb(120, 216, 120);
+    text-shadow: 1px 1px 3px rgb(0, 68, 11);
+    font-size: 22px;
+    font-weight: 900;
+    z-index: 2;
+    position: relative;
+    text-transform: uppercase;
+    padding-top: 10px;
+}
+
+.greenWeb {
+    padding-right: 50px;
+}
+
+
 /* partenaires */
 
 .partenairesTitle {
     font-family: trebuchet, helvetica, sans-serif;
     color: #000000;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 400;
     text-align: center;
     margin: 40px 0 100px 0;
@@ -455,17 +450,6 @@ header {
     .container {
         width: 1170px;
     }
-}
-
-.donate {
-    display: flex;
-    flex-direction: row;
-    line-height: 2em;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
 }
 
 

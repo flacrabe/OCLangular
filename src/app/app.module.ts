@@ -7,7 +7,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ArticlesComponent } from './articles/articles.component';
-import { FormationComponent } from './formation/formation.component';
 import { ContainerComponent } from './container/container.component';
 import { MissionComponent } from './container/mission/mission.component';
 import { PrincipesComponent } from './container/principes/principes.component';
@@ -49,10 +48,6 @@ const appRoutes: Routes = [
     path: 'articles/rebond',
     component: RebondComponent
   },
-  {
-    path: 'formation',
-    component: FormationComponent
-  },
   { path: '**', redirectTo: '' },
 
 ];
@@ -63,7 +58,6 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     ArticlesComponent,
-    FormationComponent,
     ContainerComponent,
     MissionComponent,
     PrincipesComponent,
