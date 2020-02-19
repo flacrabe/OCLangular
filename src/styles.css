@@ -4,14 +4,15 @@ body {
     background-repeat: repeat;
 }
 
-.col8 {
-    width: 80%;
+.textAccueil {
+    min-width: 300px;
+    max-width: 900px;
 }
 
-.col4 {
-    width: 20%;
+.svgAccueil {
     display: flex;
     justify-content: flex-end;
+    padding-left: 80px;
     align-items: center;
 }
 
@@ -306,7 +307,7 @@ header {
 .actionTitle {
     font-family: trebuchet, helvetica, sans-serif;
     color: #282825;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     margin-bottom: 0%;
 }
@@ -318,6 +319,7 @@ header {
 }
 
 .actionItems {
+    padding-top: 80px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -338,14 +340,14 @@ header {
     align-items: flex-start;
 }
 
+.actionBody ul li {
+    list-style: none;
+}
 
-/* #containerPartners {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 3%;
-} */
+.actionBody h4 {
+    font-size: larger;
+    font-weight: 500;
+}
 
 .iconsPartners {
     width: 110px;
@@ -365,6 +367,7 @@ header {
 }
 
 .description {
+    text-align: justify;
     font-weight: lighter;
     font-size: large;
     color: #242424;
