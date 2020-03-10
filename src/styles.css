@@ -1,7 +1,7 @@
 body {
     font: 100% Helvetica, sans-serif;
-    background-image: url("../src/assets/accueil/cubes.png");
-    background-repeat: repeat;
+    /* background-image: url("../src/assets/accueil/cubes.png");
+    background-repeat: repeat; */
 }
 
 .textAccueil {
