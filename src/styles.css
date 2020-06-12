@@ -275,20 +275,6 @@ header {
     line-height: 170%;
 }
 
-
-/* .poleWhite {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    border-top: 1px solid #282825;
-    width: 100%;
-    height: auto;
-    vertical-align: middle;
-    margin: auto;
-    padding-bottom: 3%;
-    line-height: 170%;
-} */
-
 .blockLarge {
     display: flex;
     flex-direction: row;
